@@ -5,7 +5,7 @@ function requireHTTPS(req, req, next){
         //khusus unyuk server yang kita deploy di Heroku
         && req.get('x-forwarded-proto') !== 'https'
     ){
-        return req.redirect(
+        return res.redirect(
             'https://' + req.get('host') + req.url
         )
     }
