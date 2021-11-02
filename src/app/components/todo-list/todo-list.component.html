@@ -1,0 +1,42 @@
+<app-add-todo-form
+    (newTodoEvent) = "addTodo($event)"
+>
+</app-add-todo-form>
+
+<ol *ngFor="let todo of todos; let i = index" class="list-group">
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+        <!-- <li class="list-group-item d-flex justify-content-between align-items-start" *ngIf="i != editActive"> -->
+        
+        <div class="me-auto row justify-content-center align-self-center">
+            <div class="content {{ (todo.completed ? 'done' : '') }}">
+            <!-- <div (click)=activateEdit(i) class="content {{ (todo.completed ? 'done' : '') }}"> -->
+                {{ i+1 }}. {{ todo.content }}
+            </div>
+        </div>
+        <button class="btn btn-warning btn-sm ">
+            <i class="bi bi-pencil-square"></i>
+        </button>
+        <button class="btn {{ (todo.completed ? 'btn-success' : 'btn-warning') }} btn-sm me-1 completed" (click)="toggleDone(i)">
+            <i class="bi bi-check-circle"></i>
+        </button>
+        <button class="btn btn-danger btn-sm " (click)="confirmBox(i)">
+            <i class="bi bi-trash-fill"></i>
+        </button>
+        
+    </li>
+    <!-- <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action" *ngIf="i == editActive">
+        
+        <input
+            type="text"
+            name="inputTodo"
+            placeholder="Enter todo..."
+            class="form-control-plaintext completed me-2"
+            [(ngModel)]="editText"
+            autofocus
+        />
+
+        <button class="btn btn-primary completed {{(editText == '' || editText.length < 3   ? 'disabled' : '')}}" (click)="saveEdit()">
+            <i class="bi bi-check-circle"></i>
+        </button>
+    </li> -->
+</ol>

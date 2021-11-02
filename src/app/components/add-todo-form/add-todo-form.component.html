@@ -1,0 +1,47 @@
+<!-- <form>
+    <div class="input-group mb-3">
+        <input 
+            type="text"
+            name="inputTodo"
+            placeholder="Enter Todo ..."
+            class="form-control"
+            [(ngModel)] = "inputTodo"
+        />
+        <input 
+            type="submit"
+            value="Add Todo"
+            class="btn btn-primary"
+            (click)="addTodo()"
+        />
+    </div>
+</form> -->
+<div class="container" style="border: 1mm; border-color: red;"></div>
+<form [formGroup]="todoForm" (ngSubmit)="handlerTodoForm()">
+    <div class="input-group mb-3">
+        <input 
+        type="text" 
+        name="taskName" 
+        id="taskName"
+        placeholder="Enter your todo ....."
+        class="form-control"
+        formControlName="taskName"
+        (focus)="handleIsSubmittedState(false)"
+        autocomplete="off"
+        >
+        <input 
+        type="submit" 
+        value="Add Todo" 
+        class="btn btn-primary"
+        >
+    </div>
+    
+
+    <div class="alert alert-danger mt-1" *ngIf="isSubmitted && taskName && taskName.invalid">
+        <div *ngIf="taskName.errors?.required">
+            Todo Name cannot be empty.
+        </div>
+        <div *ngIf="taskName.errors?.minlength">
+            Minimal {{ taskName?.errors?.minlength?.requiredLength }} characters long.
+        </div>
+    </div>
+</form>
