@@ -1,4 +1,4 @@
-function requireHTTPS(req, req, next){
+function requireHTTPS(req, res, next){
     // membuat semua request yang sebelumnya HTTP biasa menjadi HTTPS
     if(
         !req.secure
