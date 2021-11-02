@@ -20,10 +20,10 @@ app
 .use(requireHTTPS) //komen line ini bila local server
 //mengikuti nama app di package.json
 // misal: ./dist/<NAMA APP DI PACKAGE.JSON>
-.use(express.static('./dist/todo-app')); 
+.use(express.static('./dist/TodoApp')); 
 
 
-app.get('/*', (req,res)=> res.sendFile('index.html' ,{root: 'dist/todo-app/'}) )
+app.get('/*', (req,res)=> res.sendFile('index.html' ,{root: 'dist/TodoApp/'}) )
 
 app.listen(port,()=>{
     console.log(`Example app listening at http://localhost:${port}`)
